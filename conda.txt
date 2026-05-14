@@ -1,0 +1,90 @@
+Dưới đây là hướng dẫn chuyển đổi giữa các môi trường Python cho từng project bằng Miniconda (trên Windows, Linux hay macOS đều tương tự):
+
+🧩 1. Tạo môi trường riêng cho từng project
+bash
+Copy
+Edit
+conda create -n <tên_môi_trường> python=3.10
+conda create -n py11 python=3.11
+📌 Ví dụ:
+
+bash
+Copy
+Edit
+conda create -n cosyvoice python=3.10
+🔁 2. Kích hoạt (chuyển vào) môi trường
+bash
+Copy
+Edit
+conda activate <tên_môi_trường>
+conda activate py11
+📌 Ví dụ:
+
+bash
+Copy
+Edit
+conda activate cosyvoice
+Sau khi chạy, bạn sẽ thấy dòng prompt thay đổi, ví dụ:
+
+scss
+Copy
+Edit
+(cosyvoice) C:\Users\TenBan>
+🚪 3. Thoát khỏi môi trường hiện tại
+bash
+Copy
+Edit
+conda deactivate
+📜 4. Danh sách các môi trường đã tạo
+bash
+Copy
+Edit
+conda env list
+📌 Kết quả mẫu:
+
+csharp
+Copy
+Edit
+# conda environments:
+#
+base                  *  C:\Users\Ban\miniconda3
+cosyvoice                C:\Users\Ban\miniconda3\envs\cosyvoice
+webapp                   C:\Users\Ban\miniconda3\envs\webapp
+Dấu * đánh dấu môi trường bạn đang dùng.
+
+📂 5. Gắn môi trường vào từng project
+Bạn có thể gắn mỗi môi trường vào một folder project như sau:
+
+bash
+Copy
+Edit
+cd D:\Projects\my-tts-app
+conda activate cosyvoice
+✅ Sau đó làm việc tại thư mục đó, mọi lệnh python, pip... đều sẽ dùng đúng môi trường cosyvoice.
+
+💡 Gợi ý nâng cao
+🔄 Tự động kích hoạt môi trường khi vào project?
+Bạn có thể tạo file .conda_env hoặc .env script để tiện dùng, hoặc dùng shell như direnv (trên Linux/macOS).
+
+🧹 6. Xóa môi trường không dùng
+bash
+Copy
+Edit
+conda remove -n <tên_môi_trường> --all
+conda remove -n py11 --all
+📌 Ví dụ:
+
+bash
+Copy
+Edit
+conda remove -n test-env --all
+✅ Tóm tắt thao tác thường dùng
+Mục tiêu	Lệnh
+Tạo môi trường	conda create -n tên_env python=3.x
+Bật môi trường	conda activate tên_env
+Tắt môi trường	conda deactivate
+Xem danh sách môi trường	conda env list
+Xóa môi trường	conda remove -n tên_env --all
+
+conda create -n py310 python=3.10
+conda create -n py311 python=3.11

@@ -1,0 +1,34 @@
+[
+    {
+        "id": "libx264",
+        "name": "H.264 / AVC",
+        "codec": "libx264",
+        "extension": "mp4",
+        "description": "Most compatible codec, good balance between quality and file size.",
+        "presets": ["ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow"]
+    },
+    {
+        "id": "libx265",
+        "name": "H.265 / HEVC",
+        "codec": "libx265",
+        "extension": "mp4",
+        "description": "Higher quality than H.264 at the same bitrate, but slower to encode.",
+        "presets": ["ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow"]
+    },
+    {
+        "id": "libvpx-vp9",
+        "name": "VP9 (WebM)",
+        "codec": "libvpx-vp9",
+        "extension": "webm",
+        "description": "Open source codec by Google, excellent for web usage.",
+        "presets": []
+    },
+    {
+        "id": "prores",
+        "name": "Apple ProRes",
+        "codec": "prores_ks",
+        "extension": "mov",
+        "description": "Professional intermediate codec, huge file size but extremely high quality for editing.",
+        "presets": ["proxy", "lt", "standard", "hq", "4444", "4444xq"]
+    }
+]

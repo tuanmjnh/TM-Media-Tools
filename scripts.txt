@@ -1,0 +1,22 @@
+# Cài đặt môi trường
+pip install -r requirements.txt
+
+# Chạy ứng dụng (Menu chính)
+python main.py
+
+# Chạy trực tiếp các module
+python main.py gemini
+python main.py video
+
+# Liệt kê hiệu ứng video
+bin\ffmpeg\ffmpeg.exe -h filter=xfade
+
+# Xem hướng dẫn cấu hình
+python main.py help
+
+# Đóng gói thành file .exe (Dùng PyInstaller)
+pyinstaller --onefile --name "TM-Media-Tools" --icon=public/icon.ico --add-data "src;src" --add-data "data;data" --add-data "CONFIG_GUIDE.md;." main.py
+
+# Lưu ý khi build EXE:
+# 1. File config.json và thư mục bin/, input/, output/ nên để ở ngoài file .exe để dễ dàng thay đổi.
+# 2. Lệnh trên sẽ nhúng thư mục data/ và hướng dẫn vào trong file .exe.

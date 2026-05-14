@@ -1,0 +1,93 @@
+[
+  {
+    "id": "gemini-1.5-flash",
+    "name": "Gemini 1.5 Flash",
+    "group": "Google",
+    "type": "Chat/Multimodal",
+    "description": "Model nhanh nhất, tối ưu cho tốc độ và chi phí thấp."
+  },
+  {
+    "id": "gemini-2.0-flash-lite",
+    "name": "Gemini 2.0 Flash Lite",
+    "group": "Google",
+    "type": "Chat/Multimodal",
+    "description": "Model siêu nhanh, cực kỳ tiết kiệm hạn mức API."
+  },
+  {
+    "id": "gemini-3.1-flash-image-preview",
+    "name": "Gemini 3.1 Flash Image",
+    "group": "Google",
+    "type": "Image Processing",
+    "description": "Hỗ trợ xử lý và xuất kết quả dạng hình ảnh chất lượng cao."
+  },
+  {
+    "id": "gemini-2.5-flash-image",
+    "name": "Gemini 2.5 Flash Image",
+    "group": "Google",
+    "type": "Image Processing",
+    "description": "Model chuyên dụng được tối ưu sâu cho các tác vụ hình ảnh."
+  },
+  {
+    "id": "gemini-1.5-flash-002",
+    "name": "Gemini 1.5 Flash (v2)",
+    "group": "Google",
+    "type": "Chat/Multimodal",
+    "description": "Phiên bản nâng cấp, cân bằng tốt giữa tốc độ và chất lượng."
+  },
+  {
+    "id": "gemini-1.5-pro",
+    "name": "Gemini 1.5 Pro",
+    "group": "Google",
+    "type": "Chat/Multimodal",
+    "description": "Model mạnh mẽ nhất cho các tác vụ phức tạp."
+  },
+  {
+    "id": "gemini-2.0-flash",
+    "name": "Gemini 2.0 Flash",
+    "group": "Google",
+    "type": "Chat/Multimodal",
+    "description": "Thế hệ mới nhất, cực nhanh và thông minh."
+  },
+  {
+    "id": "imagen-3",
+    "name": "Imagen 3",
+    "group": "Google",
+    "type": "Image Generation",
+    "description": "Model chuyên dụng để tạo ảnh nghệ thuật từ văn bản."
+  },
+  {
+    "id": "veo-1",
+    "name": "Veo 1",
+    "group": "Google",
+    "type": "Video Generation",
+    "description": "Model chuyên dụng để tạo video chất lượng cao từ văn bản."
+  },
+  {
+    "id": "gpt-4o",
+    "name": "GPT-4o",
+    "group": "OpenAI",
+    "type": "Chat/Multimodal",
+    "description": "Model đa phương thức mạnh mẽ nhất của OpenAI."
+  },
+  {
+    "id": "dall-e-3",
+    "name": "DALL-E 3",
+    "group": "OpenAI",
+    "type": "Image Generation",
+    "description": "Model tạo ảnh nổi tiếng tích hợp trong ChatGPT."
+  },
+  {
+    "id": "sora",
+    "name": "Sora",
+    "group": "OpenAI",
+    "type": "Video Generation",
+    "description": "Model tạo video chân thực từ văn bản (Đang phát triển)."
+  },
+  {
+    "id": "claude-3-5-sonnet",
+    "name": "Claude 3.5 Sonnet",
+    "group": "Anthropic",
+    "type": "Chat/Code",
+    "description": "Model xử lý ngôn ngữ và lập trình hàng đầu."
+  }
+]

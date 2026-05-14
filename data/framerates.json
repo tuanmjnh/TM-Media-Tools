@@ -1,0 +1,27 @@
+[
+  {
+    "fps": 24,
+    "name": "24 FPS (Cinematic)",
+    "description": "Tốc độ khung hình tiêu chuẩn điện ảnh."
+  },
+  {
+    "fps": 25,
+    "name": "25 FPS (PAL)",
+    "description": "Tiêu chuẩn truyền hình châu Âu và Việt Nam."
+  },
+  {
+    "fps": 30,
+    "name": "30 FPS (NTSC)",
+    "description": "Tiêu chuẩn truyền hình Mỹ và Nhật Bản, mượt mà cho web."
+  },
+  {
+    "fps": 50,
+    "name": "50 FPS (PAL High)",
+    "description": "Tốc độ cao cho chuyển động mượt mà hơn."
+  },
+  {
+    "fps": 60,
+    "name": "60 FPS (High Frame Rate)",
+    "description": "Cực kỳ mượt mà, lý tưởng cho video hành động hoặc game."
+  }
+]
