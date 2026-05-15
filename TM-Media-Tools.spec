@@ -5,7 +5,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('src', 'src'), ('data', 'data'), ('CONFIG_GUIDE.md', '.')],
+    datas=[('src', 'src'), ('data', 'data')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -35,5 +35,6 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    version='file_version_info.txt',
     icon=['public\\icon.ico'],
 )

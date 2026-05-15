@@ -1,0 +1,41 @@
+{
+  "gemini": {
+    "api_key": "",
+    "model_name": "gemini-1.5-flash-002",
+    "prompt": "Optimize this image to 4K resolution."
+  },
+  "video": {
+    "image_formats": [
+      ".jpg",
+      ".jpeg",
+      ".png",
+      ".webp"
+    ],
+    "min_images": 5,
+    "max_images": 10,
+    "min_duration": 15,
+    "max_duration": 30,
+    "reuse_images": true,
+    "default_fps": 30,
+    "transitions": [],
+    "codec_id": "libx264",
+    "resolution_id": "h-fhd",
+    "min_image_duration": 2.0,
+    "max_image_duration": 5.0,
+    "min_transition_duration": 0.5,
+    "max_transition_duration": 1.5,
+    "zoom_speed": 0.0015,
+    "video_speed": 1.0,
+    "audio_file": "",
+    "audio_volume": 1.0,
+    "ffmpeg_binary": ""
+  },
+  "paths": {
+    "input_dir": "input",
+    "output_dir": "output"
+  },
+  "retry": {
+    "count": 3,
+    "delay": 15
+  }
+}

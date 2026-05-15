@@ -13,17 +13,17 @@ def build():
         "--icon=public/icon.ico",
         "--add-data", "src;src",
         "--add-data", "data;data",
-        "--add-data", "CONFIG_GUIDE.md;.",
+        "--version-file", "file_version_info.txt",
         "main.py"
     ]
     
     try:
         # Run PyInstaller
         subprocess.run(cmd, check=True)
-        print("\n✅ Build thành công! File EXE nằm trong thư mục 'dist/'.")
-        print("\n⚠️ Lưu ý: Hãy đảm bảo copy file 'config.json' và thư mục 'bin/', 'input/', 'output/' vào cùng thư mục với file EXE để ứng dụng hoạt động chính xác.")
+        print("\n[SUCCESS] Build thanh cong! File EXE nam trong thu muc 'dist/'.")
+        print("\n[NOTE] Hay dam bao thu muc 'data/', 'bin/', 'input/', 'output/' nam cung thu muc voi file EXE de ung dung hoat dong chinh xac.")
     except Exception as e:
-        print(f"\n❌ Lỗi khi build: {e}")
+        print(f"\n[ERROR] Loi khi build: {e}")
 
 if __name__ == "__main__":
     build()

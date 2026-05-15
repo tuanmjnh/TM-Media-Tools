@@ -1,5 +1,4 @@
-# api_key = "AIzaSyCtkGeS-E9AIZQ1YxJ9EJlNhjZmezln1YI"
-api_key = "AIzaSyAlzrINd2DffJ5mKTICOCV4T4QWiNbkT90"
+api_key = "[ENCRYPTION_KEY]"
 import time
 from google import genai
 from google.genai import types

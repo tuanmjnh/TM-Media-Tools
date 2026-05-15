@@ -12,8 +12,8 @@ File `config.json` chứa toàn bộ thiết lập cho các ứng dụng trong b
 - **min_images / max_images**: Khoảng số lượng ảnh sẽ chọn ngẫu nhiên.
 - **min_duration / max_duration**: Khoảng thời lượng video mong muốn (giây).
 - **reuse_images**: `true` nếu cho phép dùng lại ảnh đã chọn, `false` nếu muốn ảnh duy nhất.
-- **image_duration**: Thời gian hiển thị 1 ảnh (giây).
-- **transition_duration**: Thời gian của hiệu ứng chuyển cảnh (giây).
+- **min_image_duration / max_image_duration**: Khoảng thời gian hiển thị 1 ảnh (giây), hỗ trợ số thập phân.
+- **min_transition_duration / max_transition_duration**: Khoảng thời gian của hiệu ứng chuyển cảnh (giây), hỗ trợ số thập phân.
 - **default_fps**: Khung hình trên giây (VD: `30`, `60`).
 - **transitions**: Danh sách các hiệu ứng muốn dùng. Để trống `[]` sẽ dùng ngẫu nhiên từ `data/transitions.txt`.
 - **codec_id**: ID bộ mã hóa video (VD: `libx264` cho mp4). Xem `data/encodings.json`.
@@ -21,9 +21,12 @@ File `config.json` chứa toàn bộ thiết lập cho các ứng dụng trong b
 - **ffmpeg_binary**: Đường dẫn file `ffmpeg.exe`. Nếu để trống sẽ tự tìm trong `bin/ffmpeg/`.
 
 ## 3. Đường dẫn (`paths`)
-- **input_dir**: Thư mục chứa ảnh đầu vào.
-- **output_dir**: Thư mục lưu kết quả.
+- **input_dir**: Thư mục chứa ảnh đầu vào. Hỗ trợ đường dẫn tuyệt đối (VD: `C:/Images`) hoặc tương đối (VD: `input`).
+- **output_dir**: Thư mục lưu kết quả. Hỗ trợ đường dẫn tuyệt đối hoặc tương đối.
 
 ## 4. Thử lại (`retry`)
-- **count**: Số lần thử lại nếu lỗi API (Rate Limit).
 - **delay**: Thời gian chờ giữa các lần thử (giây).
++
++## 5. Lệnh Hệ thống (`System`)
++- **Khôi phục cấu hình**: Nếu file `config.json` bị lỗi hoặc bạn muốn quay lại thiết lập ban đầu, hãy chọn mục **7** trong menu chính.
+- **Tự động tạo cấu hình**: Nếu file `config.json` bị xóa, ứng dụng sẽ tự động tạo lại file này từ bản mẫu trong thư mục `data/default_config.json`.

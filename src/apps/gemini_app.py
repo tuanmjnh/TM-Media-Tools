@@ -3,6 +3,9 @@ from src.core.ai_client import GeminiClient
 from src.core.image_engine import ImageEngine
 
 def run_app():
+    # Load lại cấu hình mới nhất từ file
+    config.load()
+    
     print("\n--- Gemini Image Optimizer ---")
     
     try:

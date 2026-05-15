@@ -70,7 +70,7 @@ class FfmpegEngine:
             'fps': 30,
             'codec': 'libx264',
             'duration_per_image': 3,
-            'transition_duration': 1,
+            'transition_durations': [1, 1.5, ...],
             'effects': {'zoom': True, 'flip': 'random'},
             'output_name': 'result.mp4'
         }
@@ -84,10 +84,9 @@ class FfmpegEngine:
         w, h = res['width'], res['height']
         codec = settings.get('codec', 'libx264')
         bitrate = settings.get('bitrate', '5000k')
-        trans_dur = config.TRANSITION_DURATION
-        
-        # Lấy danh sách thời lượng từng ảnh (nếu có)
-        img_durations = settings.get('image_durations', [config.IMAGE_DURATION] * len(images))
+        # Lấy danh sách thời lượng từng ảnh và chuyển cảnh
+        img_durations = settings.get('image_durations', [config.MIN_IMAGE_DURATION] * len(images))
+        trans_durations = settings.get('transition_durations', [config.MIN_TRANSITION_DURATION] * (len(images) - 1))
         
         output_path = self.output_dir / settings.get('output_name', f"video_{random.randint(1000, 9999)}.mp4")
 
@@ -131,16 +130,17 @@ class FfmpegEngine:
         current_v = "[v0]"
         cumulative_offset = 0.0
         for i in range(1, len(images)):
-            # Offset = (tổng thời gian các ảnh trước) / speed - transition_duration
+            t_dur = trans_durations[i-1]
+            # Offset = (tổng thời gian các ảnh trước) / speed - t_dur
             dur_prev = img_durations[i-1] / config.VIDEO_SPEED
-            cumulative_offset += (dur_prev - trans_dur)
+            cumulative_offset += (dur_prev - t_dur)
             
             # Làm tròn offset để tránh sai số
             offset_val = round(cumulative_offset, 3)
             
             trans = random.choice(self.transitions) if self.transitions else 'fade'
             new_v = f"[vt{i}]"
-            filter_complex.append(f"{current_v}[v{i}]xfade=transition={trans}:duration={trans_dur}:offset={offset_val}{new_v}")
+            filter_complex.append(f"{current_v}[v{i}]xfade=transition={trans}:duration={t_dur}:offset={offset_val}{new_v}")
             current_v = new_v
 
         # Xử lý âm thanh (Volume & Speed)

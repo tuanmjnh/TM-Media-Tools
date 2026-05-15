@@ -1,11 +1,12 @@
 import sys
 import argparse
 from pathlib import Path
-from src.apps import gemini_app, video_app
+from src.apps import gemini_app, video_app, subfolder_video_app
 
 def show_guide():
     """Hiển thị nội dung từ CONFIG_GUIDE.md"""
-    guide_path = Path(__file__).parent / "CONFIG_GUIDE.md"
+    from src.shared.config import config
+    guide_path = config.DATA_DIR / "CONFIG_GUIDE.md"
     if guide_path.exists():
         try:
             with open(guide_path, "r", encoding="utf-8") as f:
@@ -57,6 +58,9 @@ Ví dụ sử dụng:
     # Lệnh guide
     subparsers.add_parser("guide", help="Xem hướng dẫn chi tiết về các thông số cấu hình trong config.json")
     
+    # Lệnh subfolder-video
+    subparsers.add_parser("subfolder-video", help="Tạo video từ các thư mục con trong input_dir")
+    
     # Lệnh transitions
     subparsers.add_parser("transitions", help="Liệt kê danh sách các hiệu ứng chuyển cảnh (xfade) được FFmpeg hỗ trợ")
     
@@ -73,6 +77,8 @@ Ví dụ sử dụng:
         video_app.run_app()
     elif args.command == "guide":
         show_guide()
+    elif args.command == "subfolder-video":
+        subfolder_video_app.run_app()
     elif args.command == "transitions":
         show_transitions()
     elif args.command == "models":
@@ -161,11 +167,13 @@ def interactive_menu():
         print("\n" + "="*40)
         print("      TM MEDIA TOOLS - SELECT APP")
         print("="*40)
-        print("1. Gemini Image Optimizer")
-        print("2. FFmpeg Video Creator (from Images)")
-        print("3. View Configuration Guide (Help)")
-        print("4. List Supported Video Transitions (xfade)")
-        print("5. List Supported AI Models")
+        print("1. [Image2Image] - Gemini Image Optimizer 4K")
+        print("2. [Image2Video] - FFmpeg Video Creator (from Images)")
+        print("3. [Image2Video] - Subfolder Video Creator (One video per subfolder)")
+        print("4. [Help - Config] - View Configuration Guide")
+        print("5. [Help - Video] - List Supported Video Transitions (xfade)")
+        print("6. [Help - AI] - List Supported AI Models")
+        print("7. [System] - Restore Default Configuration")
         print("0. Exit")
         print("="*40)
 
@@ -176,11 +184,18 @@ def interactive_menu():
             elif choice == '2':
                 video_app.run_app()
             elif choice == '3':
-                show_guide()
+                subfolder_video_app.run_app()
             elif choice == '4':
-                show_transitions()
+                show_guide()
             elif choice == '5':
+                show_transitions()
+            elif choice == '6':
                 show_models()
+            elif choice == '7':
+                confirm = input("Bạn có chắc chắn muốn khôi phục cấu hình mặc định? (y/n): ").strip().lower()
+                if confirm == 'y':
+                    from src.shared.config import config
+                    config.restore_defaults()
             elif choice == '0':
                 print("Exiting...")
                 break

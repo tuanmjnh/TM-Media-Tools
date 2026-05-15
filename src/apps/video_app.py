@@ -3,6 +3,9 @@ from src.shared.config import config
 from src.core.ffmpeg_engine import FfmpegEngine
 
 def run_app():
+    # Load lại cấu hình mới nhất từ file
+    config.load()
+    
     print("\n--- FFmpeg Video Creator ---")
     
     engine = FfmpegEngine()
@@ -42,18 +45,31 @@ def run_app():
         
         # Calculate total duration and select images with random duration
         target_duration = random.randint(config.MIN_DURATION, config.MAX_DURATION)
-        trans_dur = config.TRANSITION_DURATION
         
-        current_total_duration = trans_dur
+        current_total_duration = 0.0
         final_images = []
         final_durations = []
+        final_trans_durations = []
         
         while current_total_duration < target_duration:
             img = random.choice(images)
             dur = round(random.uniform(config.MIN_IMAGE_DURATION, config.MAX_IMAGE_DURATION), 2)
+            
+            if not final_images:
+                # First image
+                current_total_duration = dur
+            else:
+                # Subsequent images with transition
+                t_dur = round(random.uniform(config.MIN_TRANSITION_DURATION, config.MAX_TRANSITION_DURATION), 2)
+                # Ensure transition is not longer than images
+                t_dur = min(t_dur, dur * 0.5, final_durations[-1] * 0.5)
+                
+                final_trans_durations.append(t_dur)
+                current_total_duration += (dur - t_dur)
+                
             final_images.append(img)
             final_durations.append(dur)
-            current_total_duration += (dur - trans_dur)
+            
             if len(final_images) > 100: break
 
         print(f"Total video duration (est): {round(current_total_duration, 2)}s")
@@ -65,6 +81,7 @@ def run_app():
             'fps': fps,
             'codec': encoding['codec'],
             'image_durations': final_durations,
+            'transition_durations': final_trans_durations,
             'output_name': f"video_{random.randint(1000, 9999)}.{encoding.get('extension', 'mp4')}"
         }
         
